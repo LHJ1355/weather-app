@@ -43,7 +43,6 @@ export default class App extends React.Component {
     const {data : { response : { body : { items : {item}}}}} = await axios.get(url + queryParams);
     PTY = item[1].fcstValue;
     SKY = item[3].fcstValue;
-
     this.setState({
       isLoading : false,
       condition : (PTY ? PtyObj[PTY] : PtyObj[PTY][SKY]),
