@@ -13,11 +13,11 @@ const weatherOptions = {
         iconName : "weather-cloudy",
         gradient : ["black", "white"],
     },
-    Thunderstorm : {
-        iconName : "weather-lightning",
+    Pouring : {
+        iconName : "weather-pouring",
         gradient : ["#0f0c29", "#302b63", "#24243e"],
     },
-    Drizzle : {
+    Hail : {
         iconName : "weather-hail",
         gradient : ["#56CCF2", "white"],
     },
@@ -30,18 +30,18 @@ const weatherOptions = {
         gradient : ["#56CCF2", "white"],
     },
 }
-export default function Weather({condition, temp}){
-    console.log(condition, temp);
+export default function Weather({condition, POP, REH, T3H}){
     return( 
     <LinearGradient colors={weatherOptions[condition].gradient} style={styles.container}>
         <StatusBar barStyle="light-content"/>
         <View style={styles.halfContainer}>
             <MaterialCommunityIcons name={weatherOptions[condition].iconName} size={66} color="white" />
-            <Text style={styles.temp}>{temp}℃</Text>
+            <Text style={styles.temp}>{T3H}℃</Text>
         </View>
         <View style={styles.textContainer}>
-            <Text style={styles.title}>title</Text>
-            <Text style={styles.subtitle}>subtitle</Text>
+            <Text style={styles.title}>{condition}</Text>
+            <Text style={styles.subtitle}>강수확률 : {POP}%</Text>
+            <Text style={styles.subtitle}>습도 : {REH}</Text>
         </View>
     </LinearGradient>
     );
@@ -50,12 +50,12 @@ export default function Weather({condition, temp}){
 Weather.propTypes = {
     temp : PropTypes.number.isRequired,
     condition : PropTypes.oneOf([
-        "Thunderstorm",
-        "Drizzle",
+        "Hail",
         "Rain",
         "Snow",
         "Clear",
-        "Clouds"
+        "Clouds",
+        "Pouring",
     ]).isRequired,
 }
 

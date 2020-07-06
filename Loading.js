@@ -4,7 +4,7 @@ import {StyleSheet, Text, View, TouchableWithoutFeedback} from "react-native";
 export default function Loading(){
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Weather-Appaaa</Text>
+            <Text style={styles.text}>Weather-App</Text>
         </View>
     )
 }
